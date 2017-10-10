@@ -1,0 +1,1511 @@
+{
+	"variables": [],
+	"info": {
+		"name": "fuga-api-example",
+		"_postman_id": "fe54eb3b-617d-56bf-7b67-5133f1fcd733",
+		"description": "API calls for creating a release with tracks ready to deliver in Fuga API.\n\nCheckout more info on:\n# Github: https://github.com/IndependentIP/fuga-api-example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"url": "{{API_URL}}/api/login/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"{{password}}\",\n\t\"name\": \"{{username}}\"\n}"
+				},
+				"description": "First of all you need to `POST` to `/login` with the credentials provided. That will return a `set-cookie` (name: `connect.sid\n`) in your response header which is needed for the following calls.\n```\n'Cookie: connect.sid={{CRAZY_COOKIE_VALUE}}'\n```"
+			},
+			"response": [
+				{
+					"id": "d0e22a0b-fe23-44f9-82cb-e093e7030542",
+					"name": "Login",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/login/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"{{password}}\",\n\t\"name\": \"{{username}}\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:15:36 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"b71-I3/18qXCuXf9VA6IyeS/dQ\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:15:36 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 517,
+					"body": "{\n    \"user\": {\n        \"id\": 1229,\n        \"admin\": false,\n        \"full_name\": \"label_one_user label_one_user\",\n        \"last_login\": null,\n        \"name\": \"label_one_user\",\n        \"status\": \"ENABLED\",\n        \"read_only\": false\n    },\n    \"org\": {\n        \"id\": 1232,\n        \"name\": \"Label One\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"artist\");",
+							"postman.setGlobalVariable(\"artist\", jsonData.id);",
+							"",
+							"tests[\"create artist\"] = jsonData.id > 100;",
+							"tests[\"create artist Status code is 200\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/catalog/artists",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"My Awesome artist\"\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "be095941-b0c7-4731-a539-a7ffddc36c83",
+					"name": "Create Artist",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/catalog/artists",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Awesome artist\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "35",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 09 Oct 2017 11:02:06 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"23-YyzfPYdNtK2APdbGlXjNdg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Oct 09 2019 09:55:13 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Tue Oct 10 2017 09:55:13 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Mon Oct 09 2017 15:02:06 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3A977c8a60-bd0d-419c-bd50-7cf967a13c01.DT%2FetiBJasATvh%2BAtx8CYbuCR2zQ4ceIVGuG6AV0wI0",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 69,
+					"body": "{\"id\":1788,\"name\":\"Awesome artist\"}"
+				}
+			]
+		},
+		{
+			"name": "Create Label",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"label\");",
+							"postman.setGlobalVariable(\"label\", jsonData.id);",
+							"",
+							"tests[\"create label\"] = jsonData.id > 100;",
+							"tests[\"create label Status code is 200\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/catalog/labels",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"My Awesome Label\"\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "e0dea25d-aa5e-4b8b-a081-5969be00b6bc",
+					"name": "Create Label",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/catalog/labels",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"My Awesome Label\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "37",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 09 Oct 2017 11:04:58 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"25-Ld13dQaG4zicBDIJ6qtaHA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Wed Oct 09 2019 09:55:13 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Tue Oct 10 2017 09:55:13 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Mon Oct 09 2017 15:04:58 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3A977c8a60-bd0d-419c-bd50-7cf967a13c01.DT%2FetiBJasATvh%2BAtx8CYbuCR2zQ4ceIVGuG6AV0wI0",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 66,
+					"body": "{\"id\":1790,\"name\":\"My Awesome Label\"}"
+				}
+			]
+		},
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"product\");",
+							"postman.setGlobalVariable(\"product\", jsonData.id);",
+							"",
+							"postman.clearGlobalVariable(\"product_cover_image_id\");",
+							"postman.setGlobalVariable(\"product_cover_image_id\", jsonData.cover_image.id);",
+							"",
+							"tests[\"create product\"] = jsonData.id > 100;",
+							"tests[\"create product Status code is 200\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"",
+							"tests[\"product has cover image id\"] = jsonData.cover_image.id > 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/catalog/products",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Awesome Release\",\n    \"label\": {{label}},\n    \"catalog_number\": \"CAT-NUM-123\",\n    \"upc\": \"0001231231232\",\n    \"c_line_text\": \"album art copyright info\",\n    \"p_line_text\": \"performing/recording copyright info\",\n    \"c_line_year\": 2017,\n    \"p_line_year\": 2017,\n    \"genre\": \"ELECTRONIC\",\n    \"artists\": [{\n      \"primary\": true,\n      \"id\": {{artist}}\n    }]\n    \n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "2c2da72e-e934-4ead-8e25-a13ada4504fd",
+					"name": "Create Product",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/catalog/products",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Awesome Release\",\n    \"label\": {{label}},\n    \"catalog_number\": \"CAT-NUM-123\",\n    \"upc\": \"0001231231232\",\n    \"c_line_text\": \"album art copyright info\",\n    \"p_line_text\": \"performing/recording copyright info\",\n    \"c_line_year\": 2017,\n    \"p_line_year\": 2017,\n    \"genre\": \"ELECTRONIC\",\n    \"artists\": [{\n      \"primary\": true,\n      \"id\": {{artist}}\n    }]\n    \n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:15:47 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"3250-mCvR/EG3MYbYpfaqX4EoHA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:15:47 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 196,
+					"body": "{\n    \"id\": 1648,\n    \"name\": \"Awesome Release\",\n    \"upc\": \"0001231231232\",\n    \"catalog_number\": \"CAT-NUM-123\",\n    \"state\": \"PENDING\",\n    \"suborg_state\": null,\n    \"label\": {\n        \"id\": 1647,\n        \"name\": \"My Awesome Label\"\n    },\n    \"consumer_release_date\": null,\n    \"original_release_date\": null,\n    \"added_date\": \"2017-10-10T15:15:47\",\n    \"release_version\": \"\",\n    \"preorder_date\": null,\n    \"release_format_type\": \"ALBUM\",\n    \"catalog_tier\": \"FRONT\",\n    \"compilation\": false,\n    \"total_volumes\": 1,\n    \"recording_location\": null,\n    \"recording_year\": null,\n    \"c_line_year\": 2017,\n    \"c_line_text\": \"album art copyright info\",\n    \"p_line_year\": 2017,\n    \"p_line_text\": \"performing/recording copyright info\",\n    \"language\": \"EN\",\n    \"parental_advisory\": false,\n    \"genre\": {\n        \"id\": \"ELECTRONIC\",\n        \"name\": \"Electronic\"\n    },\n    \"subgenre\": null,\n    \"alternate_genre\": null,\n    \"alternate_subgenre\": null,\n    \"display_artist\": \"My Awesome artist\",\n    \"acquisition\": {\n        \"id\": 1649,\n        \"acquisition_type\": \"OWNERSHIP\"\n    },\n    \"album_notes\": null,\n    \"label_copy_info\": null,\n    \"artwork\": [\n        {\n            \"image\": {\n                \"id\": 1653,\n                \"created_date\": \"2017-10-10T15:15:47\",\n                \"modified_date\": \"2017-10-10T15:15:47\",\n                \"original_filename\": \"\",\n                \"vault_hook\": null,\n                \"has_uploaded\": false\n            }\n        }\n    ],\n    \"cover_image\": {\n        \"id\": 1653,\n        \"created_date\": \"2017-10-10T15:15:47\",\n        \"modified_date\": \"2017-10-10T15:15:47\",\n        \"original_filename\": \"\",\n        \"vault_hook\": null,\n        \"has_uploaded\": false\n    },\n    \"organization\": {\n        \"id\": 1232,\n        \"name\": \"Label One\"\n    },\n    \"created_date\": \"2017-10-10T15:15:47\",\n    \"modified_date\": \"2017-10-10T15:15:47\",\n    \"last_review_item\": null,\n    \"total_assets\": 0,\n    \"assets\": [],\n    \"artists\": [\n        {\n            \"id\": 1645,\n            \"name\": \"My Awesome artist\",\n            \"primary\": true\n        }\n    ],\n    \"tags\": [],\n    \"custom_fields\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Product Cover Image Upload - Start",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"product_cover_upload_token\");",
+							"postman.setGlobalVariable(\"product_cover_upload_token\", jsonData.id);",
+							"",
+							"tests[\"product cover upload start is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload/start",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": {{product_cover_image_id}},\n  \"type\": \"image\"\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "f74ccad8-54f4-47b5-9325-254450cac870",
+					"name": "Product Cover Image Upload - Start",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/upload/start",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{product_cover_image_id}},\n  \"type\": \"image\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "45",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:15:50 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"2d-TtBsaXeXZxQdrPhla8mEPg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:15:50 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 142,
+					"body": "{\"id\":\"56b88f31-e999-4400-87c0-631b47cb6f8a\"}"
+				}
+			]
+		},
+		{
+			"name": "Product Cover Image Upload - File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"product cover upload file is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"tests[\"product cover upload file body success\"] = jsonData.success === true || jsonData.success === 'true';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uuid",
+							"value": "{{product_cover_upload_token}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"description": "the file to upload",
+							"type": "file",
+							"src": "0fHAOwu.jpg"
+						},
+						{
+							"key": "partbyteoffset",
+							"value": "0",
+							"description": "used for chunked uploads",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "db05c966-4788-4673-9973-c8cdc4acb6e4",
+					"name": "Product Cover Image Upload - File",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/upload",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uuid",
+									"value": "{{product_cover_upload_token}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "the file to upload",
+									"type": "file",
+									"src": {
+										"0": {}
+									}
+								},
+								{
+									"key": "partbyteoffset",
+									"value": "0",
+									"description": "used for chunked uploads",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "38",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:15:55 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"26-CuS1+Z/40SLdYfTE61atPA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:15:55 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 1132,
+					"body": "{\"success\":true,\"bytes_stored\":383853}"
+				}
+			]
+		},
+		{
+			"name": "Product Cover Image Upload - Finish",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"product cover upload finish is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"tests[\"product cover upload finish body success\"] = jsonData.success === true || jsonData.success === 'true';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload/finish",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"uuid\": \"{{product_cover_upload_token}}\",\n\t\"filename\": \"my-cover-image.jpg\"\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "7b744b1b-359b-4320-8d7d-335bf0925c8a",
+					"name": "Product Cover Image Upload - Finish",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/upload/finish",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uuid\": \"{{product_cover_upload_token}}\",\n\t\"filename\": \"my-cover-image.jpg\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "16",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:15:59 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"10-c2PoX+nt7m8FOksxlYjAhg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:15:59 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 555,
+					"body": "{\"success\":true}"
+				}
+			]
+		},
+		{
+			"name": "Create Asset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"asset\");",
+							"postman.setGlobalVariable(\"asset\", jsonData.id);",
+							"",
+							"tests[\"create asset\"] = jsonData.id > 100;",
+							"tests[\"create asset Status code is 200\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/catalog/assets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"My Awesome track\",\n  \"isrc\": \"OM-O8I-14-20653\",\n  \"genre\": \"ELECTRONIC\",\n  \"artists\": [{\n\t\"primary\": true,\n\t\"id\": {{artist}}\n  }]\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "8504156a-bf5c-497b-ab30-037ffadb61d7",
+					"name": "Create Asset",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/catalog/assets",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"My Awesome track\",\n  \"isrc\": \"OM-O8I-14-20653\",\n  \"genre\": \"ELECTRONIC\",\n  \"artists\": [{\n\t\"primary\": true,\n\t\"id\": {{artist}}\n  }]\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:16:02 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"4fa-ODNGFqXMPNMywR2vBM1IWQ\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:16:02 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 132,
+					"body": "{\"id\":1655,\"isrc\":\"OMO8I1420653\",\"type\":\"TRACK\",\"name\":\"My Awesome track\",\"display_artist\":\"My Awesome artist\",\"asset_version\":null,\"asset_catalog_tier\":\"MID\",\"p_line_year\":null,\"p_line_text\":null,\"preview_start\":0,\"preview_length\":30,\"language\":\"EN\",\"genre\":{\"id\":\"ELECTRONIC\",\"name\":\"Electronic\"},\"subgenre\":null,\"alternate_genre\":null,\"alternate_subgenre\":null,\"artists\":[{\"id\":1645,\"name\":\"My Awesome artist\",\"primary\":true}],\"volume\":1,\"sequence\":null,\"available_separately\":true,\"allow_preorder\":false,\"allow_preorder_preview\":false,\"preorder_type\":\"STANDARD\",\"audio\":{\"id\":1656,\"original_filename\":null,\"vault_hook\":null,\"created_date\":\"2017-10-10T15:16:02\",\"modified_date\":\"2017-10-10T15:16:02\",\"has_uploaded\":false},\"original_encodings\":[],\"rights_claim\":\"MONETIZE\",\"parental_advisory\":false,\"recording_year\":null,\"recording_location\":null,\"rights_holder_name\":null,\"country_of_recording\":null,\"country_of_comissioning\":null,\"rights_ownership_name\":null,\"rights_contract_begin_date\":null,\"contributors\":[],\"publishers\":[],\"organization\":{\"id\":1232,\"name\":\"Label One\"},\"created_date\":\"2017-10-10T15:16:02\",\"modified_date\":\"2017-10-10T15:16:02\",\"tags\":[],\"video_hd\":false,\"video\":{\"has_uploaded\":false},\"video_preview_image\":{\"has_uploaded\":false},\"products_count\":0}"
+				}
+			]
+		},
+		{
+			"name": "Asset Audio Upload - Start",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.clearGlobalVariable(\"asset_audio_upload_token\");",
+							"postman.setGlobalVariable(\"asset_audio_upload_token\", jsonData.id);",
+							"",
+							"tests[\"asset audio upload start is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload/start",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": {{asset}},\n  \"type\": \"audio\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Asset Audio Upload - File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"asset audio upload file is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"tests[\"asset audio upload file body success\"] = jsonData.success === true || jsonData.success === 'true';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uuid",
+							"value": "{{asset_audio_upload_token}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"description": "the file to upload",
+							"type": "file",
+							"src": "bell (96khz 24bit).wav"
+						},
+						{
+							"key": "partbyteoffset",
+							"value": "0",
+							"description": "used for chunked uploads",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Asset Audio Upload - Finish",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"asset audio upload finish is OK\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"tests[\"asset audio upload finish body success\"] = jsonData.success === true || jsonData.success === 'true';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/upload/finish",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"uuid\": \"{{asset_audio_upload_token}}\",\n\t\"filename\": \"my-audio-file.wav\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Link Asset To Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"link asset to product\"] = responseCode.code === 200 || responseCode.code === 201 || responseCode.code === 202;",
+							"",
+							"tests[\"link asset to product\"] = jsonData.id == postman.getGlobalVariable('product');",
+							"",
+							"tests[\"should have asset in product assets\"] = ",
+							"    !!jsonData.assets.find(function findAsset (asset) {",
+							"        return asset.id == postman.getGlobalVariable('asset');",
+							"    })"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{API_URL}}/api/catalog/products/{{product}}/assets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": {{asset}}\n}"
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "783da6b2-bf1b-4380-838f-8abb4f8aab96",
+					"name": "Link Asset To Product",
+					"originalRequest": {
+						"url": "{{API_URL}}/api/catalog/products/{{product}}/assets",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": {{asset}}\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-encoding",
+							"key": "content-encoding",
+							"value": "gzip",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 10 Oct 2017 13:16:45 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"3360-85Vh7MTvb5RkDjsWGhV12A\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"name": "vary",
+							"key": "vary",
+							"value": "Accept-Encoding",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Thu Oct 10 2019 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1861192204.1503312601",
+							"key": "_ga"
+						},
+						{
+							"expires": "Wed Oct 11 2017 15:12:39 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "GA1.1.1798463709.1507535713",
+							"key": "_gid"
+						},
+						{
+							"expires": "Tue Oct 10 2017 17:16:45 GMT+0200 (CEST)",
+							"hostOnly": true,
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"session": false,
+							"value": "s%3Ab9f6fac5-2e88-4fda-8a46-306eae164648.MHpZPp7R4uBYv5xClf4TAq6eYVynaspmxQVDvoA7tiE",
+							"key": "connect.sid"
+						}
+					],
+					"responseTime": 329,
+					"body": "{\n    \"id\": 1648,\n    \"name\": \"Awesome Release\",\n    \"upc\": \"0001231231232\",\n    \"catalog_number\": \"CAT-NUM-123\",\n    \"state\": \"PENDING\",\n    \"suborg_state\": null,\n    \"label\": {\n        \"id\": 1647,\n        \"name\": \"My Awesome Label\"\n    },\n    \"consumer_release_date\": null,\n    \"original_release_date\": null,\n    \"added_date\": \"2017-10-10T15:15:47\",\n    \"release_version\": \"\",\n    \"preorder_date\": null,\n    \"release_format_type\": \"ALBUM\",\n    \"catalog_tier\": \"FRONT\",\n    \"compilation\": false,\n    \"total_volumes\": 1,\n    \"recording_location\": null,\n    \"recording_year\": null,\n    \"c_line_year\": 2017,\n    \"c_line_text\": \"album art copyright info\",\n    \"p_line_year\": 2017,\n    \"p_line_text\": \"performing/recording copyright info\",\n    \"language\": \"EN\",\n    \"parental_advisory\": false,\n    \"genre\": {\n        \"id\": \"ELECTRONIC\",\n        \"name\": \"Electronic\"\n    },\n    \"subgenre\": null,\n    \"alternate_genre\": null,\n    \"alternate_subgenre\": null,\n    \"display_artist\": \"My Awesome artist\",\n    \"acquisition\": {\n        \"id\": 1649,\n        \"acquisition_type\": \"OWNERSHIP\"\n    },\n    \"album_notes\": null,\n    \"label_copy_info\": null,\n    \"artwork\": [\n        {\n            \"image\": {\n                \"id\": 1653,\n                \"created_date\": \"2017-10-10T15:15:47\",\n                \"modified_date\": \"2017-10-10T15:15:59\",\n                \"original_filename\": \"my-cover-image.jpg\",\n                \"vault_hook\": \"41b1b93f142d96cbd9d6728d2ddc4ce4.jpg\",\n                \"has_uploaded\": false\n            }\n        }\n    ],\n    \"cover_image\": {\n        \"id\": 1653,\n        \"created_date\": \"2017-10-10T15:15:47\",\n        \"modified_date\": \"2017-10-10T15:15:59\",\n        \"original_filename\": \"my-cover-image.jpg\",\n        \"vault_hook\": \"41b1b93f142d96cbd9d6728d2ddc4ce4.jpg\",\n        \"has_uploaded\": true\n    },\n    \"organization\": {\n        \"id\": 1232,\n        \"name\": \"Label One\"\n    },\n    \"created_date\": \"2017-10-10T15:15:47\",\n    \"modified_date\": \"2017-10-10T15:16:45\",\n    \"last_review_item\": null,\n    \"total_assets\": 1,\n    \"assets\": [\n        {\n            \"id\": 1655,\n            \"isrc\": \"OMO8I1420653\",\n            \"type\": \"TRACK\",\n            \"name\": \"My Awesome track\",\n            \"display_artist\": \"My Awesome artist\",\n            \"asset_version\": null,\n            \"volume\": 1,\n            \"duration\": 6,\n            \"sequence\": 1\n        }\n    ],\n    \"artists\": [\n        {\n            \"id\": 1645,\n            \"name\": \"My Awesome artist\",\n            \"primary\": true\n        }\n    ],\n    \"tags\": [],\n    \"custom_fields\": []\n}"
+				}
+			]
+		}
+	]
+}
