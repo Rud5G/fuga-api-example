@@ -2,6 +2,7 @@
 This repository will help you how to use Fuga API to create releases, add tracks to it and have it ready for delivery.
 
 Examples here are shown in `cUrl` command line for making HTTP requests and handle cookies.
+To check other langues example, check our [public Postman API Docs](https://documenter.getpostman.com/view/1173967/fuga-api-example/7187Esp)
 
 ## Flow:
 - [Login](#1-login)
