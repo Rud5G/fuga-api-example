@@ -118,6 +118,10 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
 ## 5. Upload release's cover art file
 After creating the release you need the `cover_image.id` in order to start the upload process. Uploading something to Fuga API requires 3 steps:
 
+**Cover art files restrictions**:
+- Minimum dimensions of `1400x1400`;
+- Allowed extensions: `JPG`, `PNG` or `GIF`;
+
 ```
 curl -L -b fuga-api-example-cookie-jar.txt -X POST \
   https://next.fugamusic.com/api/upload/start \
@@ -151,8 +155,6 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
   }'
 ```
 
-todo: VALIDATION
-
 
 ## 6. Create a track
 A track needs to be first created and then linked to a release.
@@ -181,6 +183,10 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
 
 ## 7. Upload track's audio file
 To start the audio upload you need the track `id` that you just created in the previous step. Again, three steps are required in order to accomplish the upload:
+
+**Audio files restrictions**:
+- Needs a stereo, 16 or 24 bit between 44.1 and 96 kHz `flac` or `wav`;
+- Duration must be greater than zero;
 
 ```
 curl -L -b fuga-api-example-cookie-jar.txt -X POST \
