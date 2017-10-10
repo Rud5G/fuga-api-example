@@ -8,10 +8,10 @@ Examples here are shown in `cUrl` command line for making HTTP requests and hand
 - [Create an artist](#2-create-an-artist)
 - [Create a label](#3-create-a-label)
 - [Create a release with required metadata](#4-create-a-release)
-- [Upload a cover art](#5-upload-releases-cover-art-file)
+- [Upload a cover art to the release](#5-upload-releases-cover-art-file)
 - [Create a track with required metadata](#6-create-a-track)
-- [Upload an audio file to the created track](#7-upload-tracks-audio-file)
-- [Link track to product](#8-link-track-to-product)
+- [Upload an audio file to the track](#7-upload-tracks-audio-file)
+- [Link track to the release](#8-link-track-to-the-release)
 - [Submit for review](#9-submit-for-review)
 
 ## 1. Login
@@ -90,7 +90,7 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
   }'
 ```
 
-**upc**: It's a EAN-13 bar code associated with the product, that's how stores identifies your release among others. You can generate one online using this [web tool](https://www.free-barcode-generator.net/ean-13/).
+**upc**: It's a EAN-13 bar code associated with the release, that's how stores identifies your release among others. You can generate one online using this [web tool](https://www.free-barcode-generator.net/ean-13/).
 
 **catalog_number**: It's an internal identifier used by labels and required in order to publish your release. It's a free string value, usually a combination of text and numbers.
 
@@ -176,7 +176,7 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
 
 **ISRC_CODE**: The unique identifier for a track. That can also be generated for demonstration purposes in this [web tool](http://salomvary.github.io/random-isrc/)
 
-*Note: you can create as many tracks you want and them link them all to your release, covered in [step 8](#8-link-track-to-product)* 
+*Note: you can create as many tracks you want and them link them all to your release, covered in [step 8](#8-link-track-to-the-release)* 
 
 
 ## 7. Upload track's audio file
@@ -225,8 +225,8 @@ curl -L -b fuga-api-example-cookie-jar.txt -X GET \
 todo: VALIDATION
 
 
-## 8. Link track to product
-To link a track to a product you need to `POST` to `/catalog/products/{id}/assets` with the track id in the body `{"id": track_id }`.
+## 8. Link track to the release
+To link a track to a release you need to `POST` to `/catalog/products/{id}/assets` with the track id in the body `{"id": track_id }`.
 
 ```
 curl -L -b fuga-api-example-cookie-jar.txt -X POST \
@@ -237,7 +237,7 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
   }'
 ```
 
-You can check your product details with a `GET` to `/api/catalog/products/{RELEASE_ID}`:
+You can check your release details with a `GET` to `/api/catalog/products/{RELEASE_ID}`:
 
 ```
 curl -L -b fuga-api-example-cookie-jar.txt -X GET \
