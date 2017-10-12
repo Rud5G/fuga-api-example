@@ -229,8 +229,6 @@ curl -L -b fuga-api-example-cookie-jar.txt -X GET \
   https://next.fugamusic.com/api/catalog/assets/{TRACK_ID}/audio >> my-downloaded-file.mp3
 ```
 
-todo: VALIDATION
-
 
 ## 8. Link track to the release
 To link a track to a release you need to `POST` to `/catalog/products/{id}/assets` with the track id in the body `{"id": track_id }`.
