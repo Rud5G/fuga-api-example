@@ -156,6 +156,21 @@ curl -L -b fuga-api-example-cookie-jar.txt -X POST \
   }'
 ```
 
+You can download your uploaded cover art through `/catalog/products/{{RELEASE_ID}}/image/{{TYPE=optional}}` or use it in an Image control, for example `<img src='{{URL}}' />`.
+
+```
+curl -L -b fuga-api-example-cookie-jar.txt -X GET \
+  https://next.fugamusic.com/api/catalog/products/{{RELEASE_ID}}/image/{{TYPE}} >> my-cover-image.jpeg
+```
+
+The `TYPE` defines the size of the cover image and can be one of the following:
+
+- `thumb`: 125x125 px (*Default*)
+- `header`: 280x280 px
+- `list`: 350x350 px
+- `tiles`: 600x600 px
+- `full`: 1400x1400 px
+
 
 ## 6. Create a track
 A track needs to be first created and then linked to a release.
